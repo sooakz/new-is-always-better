@@ -1,0 +1,13 @@
+{
+  "short_name": "NIAB",
+  "name": "New is always better",
+  "icons": [
+    {
+      "src": "playlist.svg"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
