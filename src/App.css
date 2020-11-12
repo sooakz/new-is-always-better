@@ -33,11 +33,16 @@ body {
   height: 60vh;
   width: 40vw;
   box-shadow: 0 0 5px #000000;
-  transition: transform 330ms ease-in-out, border-color .5s cubic-bezier(1,1,1,1);
+  transition: transform 330ms ease-in-out, border-color .5s cubic-bezier(1,1,1,1), width 1s ease-in-out;
 }
 
 .boxModule:hover {
   transform: translate(0, -20px);
+  border:3px solid #35B954;
+}
+
+.boxModule:active {
+  transform: scale(1.5, 1.5);
   border:3px solid #35B954;
 }
 
@@ -81,7 +86,7 @@ body {
   line-height: 42px;
   padding: 0;
   border: none;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 .btn-3 span {
   display: flex;

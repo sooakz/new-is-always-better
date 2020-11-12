@@ -1,20 +1,15 @@
 import "./App.css";
+import React from 'react';
+import Tracklist from './Tracklist.js';
+
 function Login() {
-    const loginUrl = "https://accounts.spotify.com/authorize?client_id=788a83da87b349d79ab6182bf8593f25&response_type=code&redirect_uri=https://new-is-always-better.netlify.app/&scope=user-read-recently-played,user-top-read,user-read-playback-position,user-read-playback-state,user-modify-playback-state,user-read-currently-playing,playlist-modify-public,playlist-modify-private,playlist-read-private,playlist-read-collaborative,user-library-modify,user-library-read"
-    const urlParams = new URLSearchParams(window.location.search);
-    const myParam = urlParams.get('code');
+    const loginUrl = "https://accounts.spotify.com/authorize?client_id=788a83da87b349d79ab6182bf8593f25&response_type=token&redirect_uri=http://localhost:3000&scope=user-read-recently-played,user-top-read,user-read-playback-position,user-read-playback-state,user-modify-playback-state,user-read-currently-playing,playlist-modify-public,playlist-modify-private,playlist-read-private,playlist-read-collaborative,user-library-modify,user-library-read,user-read-recently-played"
+    const urlParams = new URLSearchParams(String(window.location.hash).replace("#", "?"));
+    const myParam = urlParams.get('access_token');
     if (myParam) {
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json'},
-            body: JSON.stringify({grant_type : "authorization_code", code : myParam, redirect_uri : "https://new-is-always-better.netlify.app/"})
-        };
-        fetch('https://accounts.spotify.com/api/token', requestOptions)
-            .then(response => console.log(response))
-            .then(data => console.log(data))
         return (
             <div className="boxModule">
-                <h1 className= "boxTitle">Login</h1>
+                <Tracklist token={myParam}></Tracklist>
             </div>
         );
     }
@@ -28,7 +23,7 @@ function Login() {
                 </div>
             </div>
         );
-    }    
+    }
 }
 
 export default Login
