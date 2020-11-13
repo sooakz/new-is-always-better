@@ -1,10 +1,40 @@
 import "./App.css";
 import React from 'react';
-import ProgressBar from 'react-bootstrap/ProgressBar'
+import ProgressBar from 'react-bootstrap/ProgressBar';
+
+function timeConversion(millisec) {
+
+    var seconds = (millisec / 1000).toFixed(1);
+
+    var minutes = (millisec / (1000 * 60)).toFixed(1);
+
+    var hours = (millisec / (1000 * 60 * 60)).toFixed(1);
+
+    var days = (millisec / (1000 * 60 * 60 * 24)).toFixed(1);
+
+    if (seconds < 60) {
+        return seconds + " Sec";
+    } else if (minutes < 60) {
+        return minutes + " Min";
+    } else if (hours < 24) {
+        return hours + " Hrs";
+    } else {
+        return days + " Days"
+    }
+}
+
+function daysBetween(one, another) {
+    return Math.round(Math.abs((+one) - (+another))/8.64e7);
+}
 
 function Track({name, artist, duration, date, albumName, image}) {
-    return (<div>
-                <p>{name}, {artist}, {duration}, {date}, {albumName}, {image}</p>
+    return (<div className="track">
+                <img className="albumImage" src={image}></img>
+                <p>{name}</p>
+                <p>{artist}</p>
+                <p>{albumName}</p>
+                <p>{timeConversion(duration)}</p>
+                <p>{daysBetween(Date.now(), new Date(date))}</p>
             </div>
     )
 }
