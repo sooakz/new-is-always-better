@@ -29,7 +29,7 @@ function daysBetween(one, another) {
 
 function Track({name, artist, duration, date, albumName, image}) {
     return (<div className="track">
-                <img className="albumImage" src={image}></img>
+                <img alt="albume image" className="albumImage" src={image}></img>
                 <p>{name}</p>
                 <p>{artist}</p>
                 <p>{albumName}</p>
